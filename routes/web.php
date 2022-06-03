@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\GabungController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\BacaMateriController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
@@ -28,6 +30,7 @@ use App\Http\Controllers\Admin\MateriDetailController;
 */
 
 Route::get('/', [BerandaController::class, 'index'])->name('index');
+Route::get('/kuliah', [KuliahController::class, 'index'])->name('kuliah');
 Route::resource('/gabung', GabungController::class);
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
@@ -38,6 +41,7 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' 
 });
 
 Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
+Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])->name('materi');
 
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();

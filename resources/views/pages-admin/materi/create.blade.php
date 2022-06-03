@@ -71,7 +71,7 @@ Tambah Materi
         selector: '#materi',
         plugins: [
             'autolink', 'autoresize', 'codesample', 'link', 'lists',
-            'powerpaste', 'table', 'image', 'quickbars', 'codesample', 'help'
+            'powerpaste', 'table', 'codesample', 'help'
         ],
     });
 

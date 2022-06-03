@@ -12,7 +12,7 @@
                         <a class="nav-link text-light p-3" href="{{route('index')}}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light p-3" href="">Kuliah</a>
+                        <a class="nav-link text-light p-3" href="{{ route('kuliah') }}">Kuliah</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light p-3" href="">Artikel</a>
