@@ -5,7 +5,7 @@ Dashboard
 @endsection
 
 @section('title-section')
-Edit Materi
+Edit Kategori Artikel
 @endsection
 
 @section('content')
@@ -26,29 +26,22 @@ Edit Materi
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" method="POST" action="{{ route('materi.update', $materi->id) }}">
+                        <form class="form form-vertical" method="POST" action="{{ route('kategori-artikel.update', $kategoriArtikel->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="first-name-vertical">Judul Materi</label>
-                                            <input type="text" id="first-name-vertical" class="form-control" value="{{ $materi->title }}" name="title"
-                                                placeholder="Masukkan Judul Materi">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="last-name-vertical">Deskripsi Materi</label>
-                                            <textarea id="materi" rows="5" class="form-control" name="materi"
-                                                placeholder="Masukkan Deskripsi Materi"> {!! $materi->materi !!}</textarea>
+                                            <label for="first-name-vertical">Kategori Artikel</label>
+                                            <input type="text" id="first-name-vertical" class="form-control" value="{{ $kategoriArtikel->nama_kategori }}" name="nama_kategori"
+                                                placeholder="Masukkan Kategori Artikel">
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex gap-2 mt-4 justify-content-start">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                         <button type="reset" class="btn btn-warning me-1 mb-1">Reset</button>
-                                        <a href="{{ route('materi.index') }}"
+                                        <a href="{{ route('kategori-artikel.index') }}"
                                             class="btn btn-danger me-1 mb-1">Kembali</a>
                                     </div>
                                 </div>
@@ -63,16 +56,4 @@ Edit Materi
 <!-- // Basic Vertical form layout section end -->
 @endsection
 
-@push('addon-script')
-<script>
-    tinymce.init({
-        selector: '#materi',
-        plugins: [
-            'autolink', 'autoresize', 'codesample', 'link', 'lists',
-            'powerpaste', 'table', 'codesample', 'help'
-        ],
-    });
-
-</script>
-@endpush
 

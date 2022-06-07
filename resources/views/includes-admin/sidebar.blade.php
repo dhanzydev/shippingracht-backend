@@ -59,7 +59,7 @@
                         </li>
 
                         <li class="sidebar-item ">
-                            <a href="" class='sidebar-link'>
+                            <a href="{{ route('kategori-artikel.index') }}" class='sidebar-link'>
                                 <i class="bi bi-list-ul"></i>
                                 <span>Kelola Kategori Artikel</span>
                             </a>

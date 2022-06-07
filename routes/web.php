@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TagArtikelController;
 use App\Http\Controllers\Admin\MateriController;
 use App\Http\Controllers\Admin\MateriDetailController;
+use App\Http\Controllers\Admin\KategoriArtikelController;
 
 
 /*
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/tag-article', TagArtikelController::class);
     Route::resource('/materi', MateriController::class);
+    Route::resource('/kategori-artikel', KategoriArtikelController::class);
     Route::get('/detail-materi/{id}/{title:slug}', [MateriDetailController::class, 'index'])->name('detail-materi');
 });
 
