@@ -4,8 +4,15 @@
 Materi
 @endsection
 
+
+
 @section('content')
-<div>
-{!! $data->materi !!}
+<div class="card">
+    <div class="card-header">
+        <h4>{{ $data->title }}</h4>
+    </div>
+    <div class="card-body">
+        {!! $data->materi !!}
+    </div>
 </div>
 @endsection

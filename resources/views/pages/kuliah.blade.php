@@ -14,11 +14,12 @@ Gabung
                     dibuat sesederhana mungkin, agar teman-teman semua bisa memahami dengan lebih mudah. Namun memang,
                     karena penulisan materi kuliahnya memerlukan waktu dan tenaga yang dimiliki sangat terbatas, jadi
                     materinya akan diunggah secara reguler; dari waktu ke waktu. Semoga bermanfaat!</p>
-                <form action="#" method="post" class="d-flex justify-content-center">
+                <form action="{{ route('carimateri') }}" method="get" class="d-flex justify-content-center">
+                    @csrf
                     <div class="input-group" style="width: 800px;">
-                        <input type="search" class="form-control" placeholder="Cari Materi">
+                        <input type="search" class="form-control" name="search" placeholder="Cari Materi">
                         <span class="input-group-append">
-                            <button class="btn btn-primary border" type="button">
+                            <button class="btn btn-primary border" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
@@ -37,7 +38,7 @@ Gabung
                     <div class="card">
                         <div class="card-body">
                             <a href="{{ route('materi',[$value->id, $value->slug]) }}" class="text-decoration-none text-black fs-2 fw-bold">{{ $value->title }}</a>
-                            <p class="card-text mt-4"><small class="text-muted">{{ $value->created_at }}</small></p>
+                            {{-- <p class="card-text mt-4"><small class="text-muted">{{ $value->created_at }}</small></p> --}}
                         </div>
                     </div>
                 </div>
@@ -47,7 +48,7 @@ Gabung
             <nav aria-label="Page navigation example justify-content-center" style="margin-top: 300px;">
 
                 {{-- Pagination --}}
-                {{ $data->links()}}
+                {{ $page->links()}}
 
             </nav>
         </div>

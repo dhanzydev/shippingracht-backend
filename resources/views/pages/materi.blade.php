@@ -20,68 +20,12 @@
         <!-- Sidebar -->
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-header d-flex">
-                <a href="#" class="text-white header fs-4 fw-bold text-decoration-none position-fixed">Judul Materi</a>
+                <a href="#" class="text-white header fs-4 fw-bold text-decoration-none position-fixed">{{ $data->title }}</a>
                 <hr>
             </div>
             <div id="sidebar-nav" class="sidebar-nav">
-                <ul class="list-unstyled list-group position-fixed">
-                    <li class="list-group-item">
-                        <a class="dropdown-toggle text-decoration-none text-black pb-0 mb-0 text-white"
-                            data-bs-toggle="collapse" href="#dropDown1" role="button" aria-expanded="false"
-                            aria-controls="">
-                            Materi 1
-                        </a>
-                        <ul class="collapse list-unstyled mt-3" id="dropDown1">
-                            <li><a href="#subMateri1" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 1</a></li>
-                            <li><a href="#subMateri2" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 2</a></li>
-                            <li><a href="#subMateri3" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="dropdown-toggle text-decoration-none text-white pb-0 mb-0" data-bs-toggle="collapse"
-                            href="#dropDown2" role="button" aria-expanded="false" aria-controls="">
-                            Materi 2
-                        </a>
-                        <ul class="collapse list-unstyled mt-3" id="dropDown2">
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 1</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 2</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="dropdown-toggle text-decoration-none text-white pb-0 mb-0" data-bs-toggle="collapse"
-                            href="#dropDown3" role="button" aria-expanded="false" aria-controls="">
-                            Materi 3
-                        </a>
-                        <ul class="collapse list-unstyled mt-3" id="dropDown3">
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 1</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 2</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="dropdown-toggle text-decoration-none text-white pb-0 mb-0" data-bs-toggle="collapse"
-                            href="#dropDown4" role="button" aria-expanded="false" aria-controls="">
-                            Materi 4
-                        </a>
-                        <ul class="collapse list-unstyled mt-3" id="dropDown4">
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 1</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 2</a></li>
-                            <li><a href="#" class="text-decoration-none text-white"><span
-                                        class="fa fa-chevron-right ms-3 me-4"></span> Sub 3</a></li>
-                        </ul>
-                    </li>
+                <ul class="list-unstyled list-group position-fixed" id="listHeader">
+
                 </ul>
             </div>
         </nav>
@@ -101,8 +45,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </nav>
-            <div class="main-content">
-                {{ $data->materi }}
+            <div class="main-content" id="content">
+                {!! $data->materi !!}
             </div>
             <!-- Main Content -->
         </div>
@@ -119,6 +63,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+
     </script>
 
     <script>
@@ -142,6 +87,133 @@
             }
         })
     </script>
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        // Display heading from content materi
+
+        var listHeader = document.getElementById('listHeader');
+        var content = document.getElementById('content');
+
+        //Get all heading
+        const elementh1 = document.getElementsByTagName("h1");
+        const elementh2 = document.getElementsByTagName("h2");
+        const elementh3 = document.getElementsByTagName("h3");
+        const elementh4 = document.getElementsByTagName("h4");
+        const elementh5 = document.getElementsByTagName("h5");
+        const elementh6 = document.getElementsByTagName("h6");
+
+
+        // Create list
+        if (elementh1 != null) {
+            for(var i = 0; i < elementh1.length; i++) {
+                // Create list item
+                var li = document.createElement('li');
+                var tagA = document.createElement("a");
+                var text = elementh1[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh1[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh1[i].setAttribute("id", textReplace);
+            }
+        }
+
+        if (elementh2 != null) {
+            for(var i = 0; i < elementh2.length; i++) {
+                var li = document.createElement('li');
+                var tagA = document.createElement("a");
+                var text = elementh2[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh2[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh2[i].setAttribute("id", textReplace);
+            }
+        }
+
+        if (elementh3 != null) {
+            for(var i = 0; i < elementh3.length; i++) {
+                var li = document.createElement('li');
+                var tagA = document.createElement("a");
+                var text = elementh3[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh3[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh3[i].setAttribute("id", textReplace);
+            }
+        }
+
+        if (elementh4 != null) {
+            for(var i = 0; i < elementh4.length; i++) {
+                var tagA = document.createElement("a");
+                var li = document.createElement('li');
+                var text = elementh4[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh4[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh4[i].setAttribute("id", textReplace);
+            }
+        }
+
+        if (elementh5 != null) {
+            for(var i = 0; i < elementh5.length; i++) {
+                var tagA = document.createElement("a");
+                var li = document.createElement('li');
+                var text = elementh5[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh5[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh5[i].setAttribute("id", textReplace);
+            }
+        }
+
+        if (elementh6 != null) {
+            for(var i = 0; i < elementh6.length; i++) {
+                var tagA = document.createElement("a");
+                var li = document.createElement('li');
+                var text = elementh6[i].innerText;
+                var textReplace = text.replace(/\s/g, '');
+
+                tagA.setAttribute("href", "#" + textReplace);
+                tagA.setAttribute("class", "text-decoration-none text-black pb-0 mb-0 text-white");
+                tagA.innerText = elementh6[i].innerText;
+                li.appendChild(tagA);
+                listHeader.appendChild(li);
+
+                elementh6[i].setAttribute("id", textReplace);
+            }
+        }
+
+        console.log(listHeader);
+
+    </script>
+
 </body>
 
 </html>

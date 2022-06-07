@@ -31,7 +31,9 @@ use App\Http\Controllers\Admin\MateriDetailController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('index');
 Route::get('/kuliah', [KuliahController::class, 'index'])->name('kuliah');
+Route::get('/carimateri', [KuliahController::class, 'index'])->name('carimateri');
 Route::resource('/gabung', GabungController::class);
+Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])->name('materi');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -40,11 +42,10 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' 
     Route::get('/detail-materi/{id}/{title:slug}', [MateriDetailController::class, 'index'])->name('detail-materi');
 });
 
-Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
-Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])->name('materi');
 
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 });
+Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
