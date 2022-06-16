@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TagArtikel extends Model
+class SaveTagArtikel extends Model
 {
     use HasFactory;
 
     protected $fillable = ['tags'];
 
-    protected $table = 'tags';
-
-    public function artikel()
-    {
-        return $this->belongsToMany(Artikel::class);
-    }
+    protected $table = 'artikel_tag';
 }

@@ -159,7 +159,7 @@ return [
     */
 
     'attributes' => [
-        'tag' => 'Tag Artikel',
+        'tags' => 'Tag',
         'title' => 'Judul Artikel',
         'materi' => 'Materi',
     ],

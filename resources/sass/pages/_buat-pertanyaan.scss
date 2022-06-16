@@ -1,0 +1,65 @@
+#header-pertanyaan {
+    padding-top: 60px;
+}
+
+#form {
+    padding-bottom: 256px;
+}
+
+.modal-body {
+    .tag {
+        margin-bottom: 10px;
+        margin-right: 11px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 2px solid var(--bs-primary);
+        color: var(--bs-primary);
+        width: max-content;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #4c7fff;
+            color: rgb(255, 255, 255);
+        }
+
+        &.tag-dipilih {
+            background-color: #4c7fff;
+            color: rgb(255, 255, 255);
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.btn-kirim-pertanyaan {
+    padding: 8px 30px;
+}
+
+.tag-terpilih-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(0, 0, 0, 0.125);
+
+    .tag-terpilih {
+        margin-right: 15px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1.5px solid var(--bs-primary);
+        color: var(--bs-primary);
+        cursor: pointer;
+        &:hover {
+            background-color: #4c7fff;
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    #header-pertanyaan {
+        padding-top: 40px;
+    }
+}

@@ -21,7 +21,7 @@
                         <a class="nav-link text-light p-3" href="">Acara</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light p-3" href="">Forum & Diskusi</a>
+                        <a class="nav-link text-light p-3" href="{{ route('forum') }}">Forum & Diskusi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light p-3" href="">Sponsor</a>

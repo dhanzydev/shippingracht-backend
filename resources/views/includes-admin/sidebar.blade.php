@@ -52,8 +52,8 @@
                         <li class="sidebar-title">Artikel</li>
 
                         <li class="sidebar-item ">
-                            <a href="{{ route('tag-article.index') }}" class='sidebar-link'>
-                                <i class="bi bi-tag-fill"></i>
+                            <a href="{{ route('tag-artikel.index') }}" class='sidebar-link'>
+                                <i class="bi bi-tag"></i>
                                 <span>Kelola Tag Artikel</span>
                             </a>
                         </li>
@@ -66,7 +66,7 @@
                         </li>
 
                         <li class="sidebar-item ">
-                            <a href="" class='sidebar-link'>
+                            <a href="{{ route('artikel.index') }}" class='sidebar-link'>
                                 <i class="bi bi-book-fill"></i>
                                 <span>Kelola Artikel</span>
                             </a>

@@ -12,4 +12,9 @@ class KategoriArtikel extends Model
     protected $fillable = ['nama_kategori', 'slug'];
 
     protected $table = 'kategori_artikel';
+
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class);
+    }
 }

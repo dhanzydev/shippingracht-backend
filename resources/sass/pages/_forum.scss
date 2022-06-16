@@ -1,0 +1,162 @@
+.forum-content {
+  width: 100%;
+
+  // Left Sidebar
+  aside {
+    width: 180px;
+    margin-right: 20px;
+
+    .left-sidebar {
+      position: fixed;
+      height: 100%;
+      padding-right: 30px;
+
+      ul.navigation {
+        list-style: none;
+        padding: 0;
+
+        a {
+          text-decoration: none;
+          font-size: 1.1rem;
+          color: var(--bs-black);
+        }
+
+        li {
+          width: 100%;
+          padding: 3px 10px;
+          border-radius: 5px;
+          margin: 10px 0;
+          cursor: pointer;
+
+          &.active {
+            background-color: var(--bs-primary);
+            color: white;
+          }
+
+          &:hover {
+            background-color: rgba(67, 106, 205, 0.85);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  // Forum Content
+  .forum-main-content {
+    width: 100%;
+
+    .content-header {
+      & h2 {
+        font-weight: bold;
+        font-size: 2.5rem;
+      }
+    }
+
+    .search-bar {
+      button {
+        padding: 10px 20px;
+      }
+    }
+
+    .list-pertanyaan {
+      .content-pertanyaan {
+        box-shadow: 2px 3px 15px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+
+        .pertanyaan-numbers {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin-bottom: 10px;
+
+          & span {
+            font-weight: bold;
+          }
+          & p {
+            margin: 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+          }
+        }
+
+        .pertanyaan {
+          a {
+            text-decoration: none;
+
+            > h4 {
+              color: black;
+            }
+          }
+
+          .tags {
+            display: flex;
+            flex-wrap: wrap;
+            .tag {
+              display: block;
+              padding: 5px 10px;
+              margin-right: 10px;
+              margin-bottom: 10px;
+              border-radius: 5px;
+              border: 2px solid rgba(67, 106, 205, 0.85);
+            }
+          }
+        }
+      }
+    }
+
+    .list-tags {
+      padding: 0 10px;
+
+      .tag-card {
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        transition: 0.2s ease-in;
+        cursor: pointer;
+        .tag {
+          margin-bottom: 10px;
+          padding: 5px 10px;
+          border-radius: 5px;
+          background-color: #6892ff;
+          color: rgb(255, 255, 255);
+          width: max-content;
+          cursor: default;
+
+          &:hover {
+            background-color: #4c7fff;
+          }
+        }
+
+        .tag-detail {
+          margin: 0;
+          font-size: 0.95rem;
+        }
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 3px 15px 3px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .forum-content {
+    .forum-main-content {
+      .list-pertanyaan {
+        .content-pertanyaan {
+          .pertanyaan-numbers {
+            flex-direction: row;
+            span {
+              margin-right: 10px;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

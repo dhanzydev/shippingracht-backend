@@ -15,7 +15,8 @@ class TagArtikelController extends Controller
      */
     public function index()
     {
-        return view ('pages-admin.tag-article.index');
+        $tag = TagArtikel::all();
+        return view('pages-admin.tag-artikel.index', compact('tag'));
     }
 
     /**
@@ -25,7 +26,7 @@ class TagArtikelController extends Controller
      */
     public function create()
     {
-        return view ('pages-admin.tag-article.create');
+        return view('pages-admin.tag-artikel.create');
     }
 
     /**
@@ -37,19 +38,20 @@ class TagArtikelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tag' => 'required'
+            'tags' => 'required'
         ]);
 
         $post = TagArtikel::create([
-            'tag' => $request->tag,
+            'tags' => $request->tags,
         ]);
+
 
         if($post){
         //redirect dengan pesan sukses
-            return redirect()->route('tag-article.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
         //redirect dengan pesan error
-            return redirect()->route('tag-article.create')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('tag-artikel.create')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
@@ -70,9 +72,9 @@ class TagArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TagArtikel $tagArtikel)
     {
-        //
+        return view('pages-admin.tag-artikel.update', compact('tagArtikel'));
     }
 
     /**
@@ -82,9 +84,25 @@ class TagArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TagArtikel $tagArtikel)
     {
-        //
+        $request->validate([
+            'tags' => 'required'
+        ]);
+
+        $post = TagArtikel::findOrFail($tagArtikel->id);
+
+        $post->update([
+            'tags' => $request->tags,
+        ]);
+
+        if($post){
+        //redirect dengan pesan sukses
+            return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Diubah!']);
+        }else{
+        //redirect dengan pesan error
+            return redirect()->route('tag-artikel.edit')->with(['error' => 'Data Gagal Diubah!']);
+        }
     }
 
     /**
@@ -93,8 +111,17 @@ class TagArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TagArtikel $tagArtikel)
     {
-        //
+        $post = TagArtikel::findOrFail($tagArtikel->id);
+        $post->delete();
+
+        if($post){
+        //redirect dengan pesan sukses
+            return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        }else{
+        //redirect dengan pesan error
+            return redirect()->route('tag-artikel.index')->with(['error' => 'Data Gagal Dihapus!']);
+        }
     }
 }

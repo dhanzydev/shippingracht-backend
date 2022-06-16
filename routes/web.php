@@ -10,13 +10,17 @@ use App\Http\Controllers\GabungController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\BacaMateriController;
+use App\Http\Controllers\ForumDiskusiController;
+use App\Http\Controllers\BuatPertanyaanController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\TagArtikelController;
 use App\Http\Controllers\Admin\MateriController;
 use App\Http\Controllers\Admin\MateriDetailController;
 use App\Http\Controllers\Admin\KategoriArtikelController;
+use App\http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\TagArtikelController;
+use App\Http\Controllers\Admin\ImageUploadArtikelController;
 
 
 /*
@@ -33,15 +37,19 @@ use App\Http\Controllers\Admin\KategoriArtikelController;
 Route::get('/', [BerandaController::class, 'index'])->name('index');
 Route::get('/kuliah', [KuliahController::class, 'index'])->name('kuliah');
 Route::get('/carimateri', [KuliahController::class, 'index'])->name('carimateri');
-Route::resource('/gabung', GabungController::class);
 Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])->name('materi');
+Route::resource('/gabung', GabungController::class);
+Route::get('/forum', [ForumDiskusiController::class, 'index'])->name('forum');
+Route::get('/buat-pertanyaan', [BuatPertanyaanController::class, 'index'])->name('buat-pertanyaan');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/tag-article', TagArtikelController::class);
     Route::resource('/materi', MateriController::class);
-    Route::resource('/kategori-artikel', KategoriArtikelController::class);
     Route::get('/detail-materi/{id}/{title:slug}', [MateriDetailController::class, 'index'])->name('detail-materi');
+    Route::resource('/kategori-artikel', KategoriArtikelController::class);
+    Route::resource('/artikel', ArtikelController::class);
+    Route::resource('/tag-artikel', TagArtikelController::class);
+    Route::post('/image-upload-artikel', [ImageUploadArtikelController::class, 'store'])->name('image-upload-artikel');
 });
 
 

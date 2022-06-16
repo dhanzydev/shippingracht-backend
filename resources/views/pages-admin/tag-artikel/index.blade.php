@@ -1,15 +1,14 @@
 @extends('layouts.app-admin')
 
 @section('title')
-Dashboard
+Tag Artikel
 @endsection
 
 @section('content')
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Daftar Tag Artikel</h3>
+            <div class="col-12">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible show fade">
                     {{ $message }}
@@ -22,6 +21,9 @@ Dashboard
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
+            </div>
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Daftar Tag Artikel</h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -38,7 +40,7 @@ Dashboard
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('tag-article.create') }}" class="btn btn-primary">Tambah Tag Artikel</a>
+                <a href="{{ route('tag-artikel.create') }}" class="btn btn-primary">Tambah Tag Artikel</a>
             </div>
             <div class="card-body">
                 <table class="table" id="table1">
@@ -46,13 +48,29 @@ Dashboard
                         <tr>
                             <th>#</th>
                             <th>Tag Artikel</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($tag as $data)
                         <tr>
-                            <td>1</td>
-                            <td>Tes</td>
+                            <td>{{ $data->id }}</td>
+                            <td>{{ $data->tags }}</td>
+                            <td>
+                                <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" action="{{ route('tag-artikel.destroy', $data->id) }}"
+                                    method="post">
+                                    <a href="{{ route('tag-artikel.edit',$data->id) }}" class="btn btn-warning">
+                                        Edit
+                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -62,3 +80,5 @@ Dashboard
     <!-- Basic Tables end -->
 </div>
 @endsection
+
+

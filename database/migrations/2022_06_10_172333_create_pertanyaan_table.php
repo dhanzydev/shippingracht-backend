@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategoriArtikeTable extends Migration
+class CreatePertanyaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateKategoriArtikeTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_artike', function (Blueprint $table) {
+        Schema::create('pertanyaan', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');
-            $table->slug('slug');
+            $table->string('pertanyaan');
+            $table->longText('deskripsi');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateKategoriArtikeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_artike');
+        Schema::dropIfExists('pertanyaan');
     }
 }

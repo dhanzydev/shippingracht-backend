@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Shipping Recht - Materi 1</title>
-        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     </head>
