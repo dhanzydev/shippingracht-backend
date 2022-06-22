@@ -20,7 +20,14 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::all();
+        // dd($artikel);
         return view('pages-admin.artikel.index', compact('artikel'));
+    }
+
+    public function list()
+    {
+        $artikel = Artikel::all();
+        return view('pages-admin.artikel.list', compact('artikel'));
     }
 
     /**

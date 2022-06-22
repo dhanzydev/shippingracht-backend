@@ -21,7 +21,8 @@ use App\Http\Controllers\Admin\KategoriArtikelController;
 use App\http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\TagArtikelController;
 use App\Http\Controllers\Admin\ImageUploadArtikelController;
-
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,14 +49,17 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' 
     Route::get('/detail-materi/{id}/{title:slug}', [MateriDetailController::class, 'index'])->name('detail-materi');
     Route::resource('/kategori-artikel', KategoriArtikelController::class);
     Route::resource('/artikel', ArtikelController::class);
+    Route::get('/daftar-artikel', [ArtikelController::class, 'list'])->name('daftar-artikel');
     Route::resource('/tag-artikel', TagArtikelController::class);
     Route::post('/image-upload-artikel', [ImageUploadArtikelController::class, 'store'])->name('image-upload-artikel');
+    Route::resource('/pengguna', UserController::class);
+    Route::get('/ganti-password', [ChangePasswordController::class, 'index'])->name('ganti-password');
+    Route::post('/ganti-password', [ChangePasswordController::class, 'changePassword'])->name('ganti-password.post');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 });
-Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

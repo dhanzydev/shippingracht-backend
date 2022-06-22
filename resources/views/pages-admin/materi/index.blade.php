@@ -89,4 +89,17 @@ Materi
 </div>
 @endsection
 
+@push('addon-script')
+<script>
+    $(document).ready(function () {
+        var table = $('#table1').DataTable({
+            responsive: true
+        });
+
+        new $.fn.dataTable.FixedHeader(table);
+    });
+
+</script>
+@endpush
+
 

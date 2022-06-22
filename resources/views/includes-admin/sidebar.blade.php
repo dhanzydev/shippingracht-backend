@@ -72,6 +72,13 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item ">
+                            <a href="{{ route('daftar-artikel') }}" class='sidebar-link'>
+                                <i class="bi bi-hdd-stack"></i>
+                                <span>Daftar Artikel</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-title">Materi</li>
                         <li class="sidebar-item ">
                             <a href="{{ route('materi.index') }}" class='sidebar-link'>
@@ -79,9 +86,23 @@
                                 <span>Kelola Materi</span>
                             </a>
                         </li>
-                        <li class="sidebar-title">Pages</li>
+                        <li class="sidebar-title">Pengaturan</li>
 
-                        <li class="sidebar-title">Raise Support</li>
+                        <li class="sidebar-item ">
+                            <a href="{{ route('ganti-password') }}" class='sidebar-link'>
+                                <i class="bi bi-gear"></i>
+                                <span>Ganti Password</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item ">
+                            <a href="{{ route('logout') }}" class='sidebar-link'>
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+
+                        {{-- <li class="sidebar-title">Raise Support</li> --}}
 
                     </ul>
                 </div>
