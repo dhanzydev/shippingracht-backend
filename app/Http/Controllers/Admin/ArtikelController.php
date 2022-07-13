@@ -83,8 +83,6 @@ class ArtikelController extends Controller
             ]);
         }
 
-        dd($post);
-
         if($post){
         //redirect dengan pesan sukses
             return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Disimpan!']);
