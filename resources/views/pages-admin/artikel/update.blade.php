@@ -63,7 +63,7 @@ Edit Artikel
                                         </fieldset>
                                     </div>
                                     <p>FOTO SAMPUL SEKARANG</p>
-                                    <img src="{{ Storage::url($artikel->foto_sampul) }}" alt="" class="w-25 h-25">
+                                    <img src="{{ url('/').Storage::url($artikel->foto_sampul) }}" alt="" class="w-25 h-25">
                                     <div class="col-12 mt-3">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Foto Sampul Artikel <br>

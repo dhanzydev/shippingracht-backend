@@ -71,7 +71,7 @@ Artikel
                         <tr>
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->judul_artikel }}</td>
-                            <td>{{ $data->nama_kategori }}</td>
+                            <td>{{ $data->kategori->nama_kategori }}</td>
                             <td>
                                 @foreach ($data->tag as $tag)
                                 <span class="badge bg-primary">{{ $tag->tags }}</span>
