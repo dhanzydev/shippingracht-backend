@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand text-light" id="logo-brand" href="">ShippingRecht</a>
+            <a class="navbar-brand text-light" id="logo-brand" href="{{ route('index') }}">ShippingRecht</a>
             <button class="navbar-toggler bg-light" id="hamburger" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">

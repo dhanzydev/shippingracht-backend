@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-Artikel
+Shipping Racht - Artikel
 @endsection
+
+@push('addon-style')
+
+@endpush
 
 @section('content')
 <section id="jumbotron-artikel">
@@ -17,28 +21,30 @@ Artikel
     <div class="container d-flex flex-column flex-md-row">
         <!-- Sidebar -->
         <div class="sidebar-artikel order-1 order-md-0">
-            <div class="search-artikel d-flex mb-3">
-                <input type="text" placeholder="Search.." class="search-bar" />
-                <button class="btn btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+            <div class="search-artikel mb-3">
+                <form action="{{ route('cariartikel') }}" method="get" class="d-flex justify-content-center">
+                    <div class="input-group" style="width: 800px;">
+                        <input type="search" class="form-control" name="search" placeholder="Cari Materi">
+                        <span class="input-group-append">
+                            <button class="btn btn-primary border" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </div>
             <ul class="navigasi-artikel" id="navigasi-artikel">
                 <h5 class="fw-bold">Kategori Artikel</h5>
-                <li class="nav-link-artikel active">Kategori 1</li>
-                <li class="nav-link-artikel">Kategori 2</li>
-                <li class="nav-link-artikel">Kategori 3</li>
-                <li class="nav-link-artikel">Kategori 4</li>
-                <li class="nav-link-artikel">Kategori 5</li>
+                @foreach ($kategori as $data)
+                <li class="nav-link-artikel"> <a href="{{ route('artikel-kategori', $data->slug) }}" class="text-decoration-none text-black">{{ $data->nama_kategori }}</a></li>
+                @endforeach
             </ul>
             <div class="daftar-tag">
                 <h5 class="fw-bold">Daftar Tag</h5>
                 <div class="tags">
-                    <div class="tag">Pelayaran</div>
-                    <div class="tag">Industri</div>
-                    <div class="tag">Hukum Pelayaran</div>
-                    <div class="tag">Politik</div>
-                    <div class="tag">Ilmu Pengetahuan</div>
+                    @foreach ($tagArtikel as $data)
+                     <a href="" class="tag text-white text-decoration-none">{{ $data->tags }}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="card-gabung">
@@ -49,36 +55,28 @@ Artikel
         </div>
         <!-- List Artikel -->
         <div class="list-artikel order-0 order-md-1">
+            @foreach ($artikel->chunk(3) as $chunk)
             <div class="row">
                 <!-- Card Artikel -->
+                @foreach ($chunk as $data)
                 <div class="card-artikel col-md-6 col-lg-4">
                     <div class="image-card-artikel mb-3">
-                        <img src="../assets/images/artikel-3.png" alt="Artikel" class="img-fluid" />
+                        <img src="{{ url('/').Storage::url($data->foto_sampul) }}" alt="Artikel" class="img-fluid" />
                     </div>
                     <div class="card-detail-artikel">
-                        <p class="author-card-artikel m-0">Author</p>
-                        <span class="tanggal-card-artikel text-muted">Juni 26, 2022</span>
-                        <h5 class="judul-card-artikel mb-3">Pentingnya Sektor Pelayaran Bagi Industri Galangan Kapal
-                        </h5>
-                        <button class="btn btn-primary">Baca Selengkapnya</button>
+                        <p class="author-card-artikel m-0">{{ $data->author->name }}</p>
+                        <span
+                            class="tanggal-card-artikel text-muted">{{ $data->created_at->translatedFormat('d F Y') }}</span>
+                        <h5 class="judul-card-artikel mb-3">{{ $data->judul_artikel }} </h5>
+                        <a href="{{ route('artikel-detail',[$data->id, $data->slug]) }}" class="btn btn-primary">Baca
+                            Selengkapnya</a>
                     </div>
                 </div>
-                <!-- Card Artikel -->
-                <div class="card-artikel col-md-6 col-lg-4">
-                    <div class="image-card-artikel mb-3">
-                        <img src="../assets/images/artikel-3.png" alt="Artikel" class="img-fluid" />
-                    </div>
-                    <div class="card-detail-artikel">
-                        <p class="author-card-artikel m-0">Author</p>
-                        <span class="tanggal-card-artikel text-muted">Juni 26, 2022</span>
-                        <h5 class="judul-card-artikel mb-3">Pentingnya Sektor Pelayaran Bagi Industri Galangan Kapal
-                        </h5>
-                        <button class="btn btn-primary">Baca Selengkapnya</button>
-                    </div>
-                </div>
+                @endforeach
             </div>
+            @endforeach
             <!-- Pagination -->
-
+            {{ $artikel->links()}}
         </div>
     </div>
 </section>

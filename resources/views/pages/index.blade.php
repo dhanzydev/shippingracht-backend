@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Beranda
+Shipping Racht - Beranda
 @endsection
 
 @section('content')

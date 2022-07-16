@@ -13,6 +13,7 @@ use App\Http\Controllers\BacaMateriController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\BuatPertanyaanController;
 use App\Http\Controllers\ArtikelController as PublicArtikelController;
+use App\Http\Controllers\DetailArtikelController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
@@ -38,12 +39,15 @@ use App\Http\Controllers\Auth\ChangePasswordController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('index');
 Route::get('/kuliah', [KuliahController::class, 'index'])->name('kuliah');
-Route::get('/carimateri', [KuliahController::class, 'index'])->name('carimateri');
+Route::get('/carimateri', [KuliahController::class, 'search'])->name('carimateri');
 Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])->name('materi');
 Route::resource('/gabung', GabungController::class);
 Route::get('/forum', [ForumDiskusiController::class, 'index'])->name('forum');
 Route::get('/buat-pertanyaan', [BuatPertanyaanController::class, 'index'])->name('buat-pertanyaan');
 Route::get('/artikel', [PublicArtikelController::class, 'index'])->name('artikel');
+Route::get('/artikel/{id}/{title:slug}', [DetailArtikelController::class, 'index'])->name('artikel-detail');
+Route::get('/cariartikel', [PublicArtikelController::class, 'search'])->name('cariartikel');
+Route::get('/kategori-artikel/{slug}', [PublicArtikelController::class, 'categories'])->name('artikel-kategori');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

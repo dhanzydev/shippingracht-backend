@@ -10,9 +10,4 @@ class BuatPertanyaanController extends Controller
     {
         return view('pages.buat-pertanyaan');
     }
-
-    public function store(Request $request)
-    {
-
-    }
 }

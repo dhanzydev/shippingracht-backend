@@ -11,19 +11,17 @@ class KuliahController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Materi::latest();
-
-        $page = DB::table('materi')->paginate(12);
-
-        if(request('search')){
-            $data->where('title', 'like', '%' . request('search') . '%');
-        }
+        $data = Materi::latest()->paginate(12);
 
         return view('pages.kuliah', [
-            "data" => $data->get(),
-            "page" => $page
+            "data" => $data,
         ]);
     }
 
-
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $data = Materi::where('title', 'like', '%' . $search . '%')->latest()->paginate(12);
+        return view('pages.kuliah', compact('data'));
+    }
 }

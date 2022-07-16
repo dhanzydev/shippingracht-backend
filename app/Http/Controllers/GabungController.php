@@ -17,7 +17,7 @@ class GabungController extends Controller
      */
     public function index()
     {
-        return view ('pages.gabung');
+        return view('pages.gabung');
     }
 
     /**
@@ -59,12 +59,12 @@ class GabungController extends Controller
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
             // Pengaturan Server
-           // $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            // $mail->SMTPDebug = 2;                                 // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = "smtp.gmail.com";               // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'madedipta1004@gmail.com';                 // SMTP username
-            $mail->Password = 'gtwdahapalagi';                           // SMTP password
+            $mail->Username = 'madedipta88@gmail.com';                 // SMTP username
+            $mail->Password = 'wlhumimzxkocfixq';                           // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
 
@@ -77,7 +77,7 @@ class GabungController extends Controller
 
             // ke siapa akan kita balas emailnya
             $mail->addReplyTo($emailAddress, $nama);
-            
+
             // $mail->addCC('cc@example.com');
             // $mail->addBCC('bcc@example.com');
 
@@ -97,12 +97,10 @@ class GabungController extends Controller
 
             $request->session()->flash('status', 'Terima kasih, kami sudah menerima pesan anda.');
             return view('pages.gabung');
-
         } catch (Exception $e) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         }
-
     }
 
     /**

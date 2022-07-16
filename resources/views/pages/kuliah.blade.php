@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Gabung
+Shipping Racht - Kuliah
 @endsection
 
 @push('addon-style')
@@ -23,7 +23,6 @@ Gabung
                     karena penulisan materi kuliahnya memerlukan waktu dan tenaga yang dimiliki sangat terbatas, jadi
                     materinya akan diunggah secara reguler; dari waktu ke waktu. Semoga bermanfaat!</p>
                 <form action="{{ route('carimateri') }}" method="get" class="d-flex justify-content-center">
-                    @csrf
                     <div class="input-group" style="width: 800px;">
                         <input type="search" class="form-control" name="search" placeholder="Cari Materi">
                         <span class="input-group-append">
@@ -39,7 +38,7 @@ Gabung
 
     <section id="materi-list">
         <div class="container">
-            @foreach ($data->chunk(3) as $chunk)
+            @foreach ($data->chunk(4) as $chunk)
             <div class="row mb-4 gap-sm-3 gap-3 gap-lg-0">
                 @foreach ($chunk as $value)
                 <div class="col-lg-3 col-12">
@@ -56,7 +55,7 @@ Gabung
             <nav aria-label="Page navigation example justify-content-center" style="margin-top: 300px;">
 
                 {{-- Pagination --}}
-                {{ $page->links()}}
+                {{ $data->links()}}
 
             </nav>
         </div>
