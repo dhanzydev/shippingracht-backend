@@ -24,7 +24,7 @@ Shipping Racht - Artikel
             <div class="search-artikel mb-3">
                 <form action="{{ route('cariartikel') }}" method="get" class="d-flex justify-content-center">
                     <div class="input-group" style="width: 800px;">
-                        <input type="search" class="form-control" name="search" placeholder="Cari Materi">
+                        <input type="search" class="form-control" name="search" value="{{ old('search') }}" placeholder="Cari Materi">
                         <span class="input-group-append">
                             <button class="btn btn-primary border" type="submit">
                                 <i class="fa fa-search"></i>
@@ -43,7 +43,7 @@ Shipping Racht - Artikel
                 <h5 class="fw-bold">Daftar Tag</h5>
                 <div class="tags">
                     @foreach ($tagArtikel as $data)
-                     <a href="" class="tag text-white text-decoration-none">{{ $data->tags }}</a>
+                     <a href="{{ route('artikel-tags', $data->slug) }}" class="tag text-white text-decoration-none">{{ $data->tags }}</a>
                     @endforeach
                 </div>
             </div>

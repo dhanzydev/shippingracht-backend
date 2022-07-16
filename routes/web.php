@@ -48,6 +48,7 @@ Route::get('/artikel', [PublicArtikelController::class, 'index'])->name('artikel
 Route::get('/artikel/{id}/{title:slug}', [DetailArtikelController::class, 'index'])->name('artikel-detail');
 Route::get('/cariartikel', [PublicArtikelController::class, 'search'])->name('cariartikel');
 Route::get('/kategori-artikel/{slug}', [PublicArtikelController::class, 'categories'])->name('artikel-kategori');
+Route::get('/tag-artikel/{slug}', [PublicArtikelController::class, 'tags'])->name('artikel-tags');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

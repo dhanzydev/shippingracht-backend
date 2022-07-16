@@ -46,9 +46,7 @@
                 </div>
                 <div class="tags">
                     @foreach ($data->tag as $tag)
-                    <div class="tag">
-                        <a href="" class="text-decoration-none text-white">{{ $tag->tags }}</a>
-                    </div>
+                    <a href="{{ route('artikel-tags', $data->slug) }}" class="tag text-decoration-none text-white">{{ $tag->tags }}</a>
                     @endforeach
                 </div>
             </div>

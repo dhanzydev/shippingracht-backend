@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TagArtikel;
+use Illuminate\Support\Str;
 
 class TagArtikelController extends Controller
 {
@@ -37,20 +38,23 @@ class TagArtikelController extends Controller
      */
     public function store(Request $request)
     {
+        $slug = Str::slug($request->tags);
+
         $request->validate([
-            'tags' => 'required'
+            'tags' => 'required',
         ]);
 
         $post = TagArtikel::create([
             'tags' => $request->tags,
+            'slug' => $slug,
         ]);
 
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('tag-artikel.create')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
@@ -86,6 +90,7 @@ class TagArtikelController extends Controller
      */
     public function update(Request $request, TagArtikel $tagArtikel)
     {
+        $slug = Str::slug($request->tags);
         $request->validate([
             'tags' => 'required'
         ]);
@@ -94,13 +99,14 @@ class TagArtikelController extends Controller
 
         $post->update([
             'tags' => $request->tags,
+            'slug' => $slug,
         ]);
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Diubah!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('tag-artikel.edit')->with(['error' => 'Data Gagal Diubah!']);
         }
     }
@@ -116,11 +122,11 @@ class TagArtikelController extends Controller
         $post = TagArtikel::findOrFail($tagArtikel->id);
         $post->delete();
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('tag-artikel.index')->with(['success' => 'Data Berhasil Dihapus!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('tag-artikel.index')->with(['error' => 'Data Gagal Dihapus!']);
         }
     }
