@@ -4,6 +4,14 @@
 Gabung
 @endsection
 
+@push('addon-style')
+    <style>
+        .card {
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+    </style>
+@endpush
+
 @section('content')
     <section id="header-kuliah">
         <div class="container">
@@ -34,11 +42,11 @@ Gabung
             @foreach ($data->chunk(3) as $chunk)
             <div class="row mb-4 gap-sm-3 gap-3 gap-lg-0">
                 @foreach ($chunk as $value)
-                <div class="col-lg-4 col-12">
+                <div class="col-lg-3 col-12">
                     <div class="card">
                         <div class="card-body">
                             <a href="{{ route('materi',[$value->id, $value->slug]) }}" class="text-decoration-none text-black fs-2 fw-bold">{{ $value->title }}</a>
-                            {{-- <p class="card-text mt-4"><small class="text-muted">{{ $value->created_at }}</small></p> --}}
+                            <p class="card-text mt-4"><small class="text-muted">{{ $value->created_at->translatedFormat('d F Y') }}</small></p>
                         </div>
                     </div>
                 </div>

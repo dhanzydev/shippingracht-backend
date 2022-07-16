@@ -12,6 +12,7 @@ use App\Http\Controllers\KuliahController;
 use App\Http\Controllers\BacaMateriController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\BuatPertanyaanController;
+use App\Http\Controllers\ArtikelController as PublicArtikelController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
@@ -42,6 +43,7 @@ Route::get('/materi/{id}/{title:slug}', [BacaMateriController::class, 'index'])-
 Route::resource('/gabung', GabungController::class);
 Route::get('/forum', [ForumDiskusiController::class, 'index'])->name('forum');
 Route::get('/buat-pertanyaan', [BuatPertanyaanController::class, 'index'])->name('buat-pertanyaan');
+Route::get('/artikel', [PublicArtikelController::class, 'index'])->name('artikel');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

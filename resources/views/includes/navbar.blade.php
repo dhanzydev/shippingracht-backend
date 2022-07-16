@@ -15,14 +15,14 @@
                         <a class="nav-link text-light p-3" href="{{ route('kuliah') }}">Kuliah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light p-3" href="">Artikel</a>
+                        <a class="nav-link text-light p-3" href="{{ route('artikel') }}">Artikel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light p-3" href="">Acara</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link text-light p-3" href="{{ route('forum') }}">Forum & Diskusi</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link text-light p-3" href="">Sponsor</a>
                     </li>
