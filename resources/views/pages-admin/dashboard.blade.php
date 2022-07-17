@@ -111,20 +111,15 @@ Dashboard
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($listMateri as $data)
                                 <tr>
                                     <td class="col-auto">
                                         <div class="d-flex align-items-center">
-                                            <p class="font-bold mb-0">Si Cantik</p>
+                                            <p class="font-bold mb-0">{{ $data->title }}</p>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="col-auto">
-                                        <div class="d-flex align-items-center">
-                                            <p class="font-bold mb-0">Si Ganteng</p>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
