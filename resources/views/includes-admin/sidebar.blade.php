@@ -49,10 +49,18 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item {{  request()->routeIs('profile.index') ? 'active' : '' }} ">
+                            <a href="{{ route('profile.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-fill"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item {{  request()->routeIs('pengguna.index') ? 'active' : '' }} ">
                             <a href="{{ route('pengguna.index') }}" class='sidebar-link'>
                                 <i class="iconly-boldAdd-User"></i>
-                                <span>Pengguna</span>
+                                <span>Tambah Pengguna</span>
                             </a>
                         </li>
                         <li class="sidebar-title">Artikel</li>

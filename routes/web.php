@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\TagArtikelController;
 use App\Http\Controllers\Admin\ImageUploadArtikelController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' 
     Route::resource('/pengguna', UserController::class);
     Route::get('/ganti-password', [ChangePasswordController::class, 'index'])->name('ganti-password');
     Route::post('/ganti-password', [ChangePasswordController::class, 'changePassword'])->name('ganti-password.post');
+    Route::resource('/profile', ProfileController::class);
 });
 
 
