@@ -15,6 +15,7 @@ use App\Http\Controllers\BuatPertanyaanController;
 use App\Http\Controllers\ArtikelController as PublicArtikelController;
 use App\Http\Controllers\DetailArtikelController;
 use App\Http\Controllers\AcaraController;
+use App\Http\Controllers\SponsorController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
@@ -51,6 +52,7 @@ Route::get('/cariartikel', [PublicArtikelController::class, 'search'])->name('ca
 Route::get('/kategori-artikel/{slug}', [PublicArtikelController::class, 'categories'])->name('artikel-kategori');
 Route::get('/tag-artikel/{slug}', [PublicArtikelController::class, 'tags'])->name('artikel-tags');
 Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
+Route::get('/sponsor', [SponsorController::class, 'index'])->name('sponsor');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

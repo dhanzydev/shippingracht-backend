@@ -24,7 +24,7 @@
                         <a class="nav-link text-light p-3" href="{{ route('forum') }}">Forum & Diskusi</a>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link text-light p-3" href="">Sponsor</a>
+                        <a class="nav-link text-light p-3" href="{{ route('sponsor') }}">Sponsor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light pt-3 ps-3" href="{{ route('gabung.index') }}">Gabung</a>
