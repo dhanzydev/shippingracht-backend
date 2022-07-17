@@ -56,15 +56,16 @@ Artikel
                             <td>{{ $data->created_at->translatedFormat('d F Y h:i:s') }}</td>
                             <td>
                                 @if ($data->status == 'Terbit')
-                        <span class="badge bg-success">Terbit</span>
-                        @else
-                        <span class="badge bg-danger">Tidak Terbit</span>
-                        @endif
+                                <span class="badge bg-success">Terbit</span>
+                                @else
+                                <span class="badge bg-danger">Tidak Terbit</span>
+                                @endif
                             </td>
                             <td>
-                                <a href="{{ route('artikel.show',$data->id) }}" class="btn btn-primary">
-                                        Lihat
-                                    </a>
+                                <a href="{{ route('artikel-detail',[$data->id, $data->slug]) }}"
+                                    class="btn btn-primary">
+                                    Lihat
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -90,5 +91,3 @@ Artikel
 
 </script>
 @endpush
-
-

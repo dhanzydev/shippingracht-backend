@@ -90,7 +90,7 @@ Artikel
                             <td>
                                 <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')"
                                     action="{{ route('artikel.destroy', $data->id) }}" method="post">
-                                    <a href="{{ route('artikel.show',$data->id) }}" class="btn btn-primary">
+                                    <a href="{{ route('artikel-detail',[$data->id, $data->slug]) }}" class="btn btn-primary">
                                         Lihat
                                     </a>
                                     <a href="{{ route('artikel.edit',$data->id) }}" class="btn btn-warning">

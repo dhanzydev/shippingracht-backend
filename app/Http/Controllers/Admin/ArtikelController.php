@@ -38,7 +38,7 @@ class ArtikelController extends Controller
     public function create()
     {
         $tag = DB::table('tags')->pluck('id', 'tags');
-        $kategoriArtikel = DB::table('kategori_artikel')->pluck('id','nama_kategori');
+        $kategoriArtikel = DB::table('kategori_artikel')->pluck('id', 'nama_kategori');
         return view('pages-admin.artikel.create', compact('kategoriArtikel', 'tag'));
     }
 
@@ -74,20 +74,20 @@ class ArtikelController extends Controller
         $idArtikel = $post->id;
         $tagArtikel = $request->input('tags');
 
-        $count = count( $request->input('tags'));
+        $count = count($request->input('tags'));
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             SaveTagArtikel::insertGetId([
                 'artikel_id' => $idArtikel,
                 'tag_artikel_id' => $tagArtikel[$i],
             ]);
         }
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('artikel.create')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
@@ -98,9 +98,10 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Artikel $artikel)
+    public function show()
     {
-        return view('pages-admin.artikel.detail', compact('artikel'));
+        $data = Artikel::all();
+        return view('pages.detail-artikel', compact('data'));
     }
 
     /**
@@ -113,7 +114,7 @@ class ArtikelController extends Controller
     {
         $kategoriArtikel = DB::table('kategori_artikel')->pluck('id', 'nama_kategori');
         $tag = DB::table('tags')->pluck('id', 'tags');
-        return view('pages-admin.artikel.update', compact('artikel','kategoriArtikel', 'tag'));
+        return view('pages-admin.artikel.update', compact('artikel', 'kategoriArtikel', 'tag'));
     }
 
     /**
@@ -140,7 +141,7 @@ class ArtikelController extends Controller
         $idArtikel = $post->id;
         $tagArtikel = $request->input('tags');
 
-        $count = count( $request->input('tags'));
+        $count = count($request->input('tags'));
 
         if ($request->file('photo') == "") {
             $post->update([
@@ -152,7 +153,7 @@ class ArtikelController extends Controller
             ]);
 
             DB::table('artikel_tag')->where('artikel_id', '=', $idArtikel)->delete();
-            for ($i=0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; $i++) {
 
 
                 SaveTagArtikel::insertGetId([
@@ -160,8 +161,8 @@ class ArtikelController extends Controller
                     'tag_artikel_id' => $tagArtikel[$i],
                 ]);
             }
-        }else{
-            Storage::disk('local')->delete('public/sampul/'.$artikel->foto_sampul);
+        } else {
+            Storage::disk('local')->delete('public/sampul/' . $artikel->foto_sampul);
             $photo = $request->file('photo')->store('public/sampul');
 
             $post->update([
@@ -173,21 +174,20 @@ class ArtikelController extends Controller
                 'status' => $request->status,
             ]);
 
-            for ($i=0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; $i++) {
                 SaveTagArtikel::insertGetId([
                     'artikel_id' => $idArtikel,
                     'tag_artikel_id' => $tagArtikel[$i],
                 ]);
             }
         }
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Diubah!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('artikel.edit')->with(['error' => 'Data Gagal Diubah!']);
         }
-
     }
 
     /**
@@ -202,11 +202,11 @@ class ArtikelController extends Controller
         Storage::disk('local')->delete($artikel->photo);
         $post->delete();
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Dihapus!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('artikel.index')->with(['error' => 'Data Gagal Dihapus!']);
         }
     }
