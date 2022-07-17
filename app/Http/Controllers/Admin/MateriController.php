@@ -19,7 +19,6 @@ class MateriController extends Controller
     {
         $materi = Materi::all();
         return view('pages-admin.materi.index', compact('materi'));
-
     }
 
     /**
@@ -61,11 +60,11 @@ class MateriController extends Controller
 
         // dd($post);
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('materi.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('materi.create')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
@@ -78,7 +77,6 @@ class MateriController extends Controller
      */
     public function show(Materi $materi)
     {
-
     }
 
     /**
@@ -121,11 +119,11 @@ class MateriController extends Controller
             'updated_at' => $dateFormat,
         ]);
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('materi.index')->with(['success' => 'Data Berhasil Disunting!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('materi.edit')->with(['error' => 'Data Gagal Disunting!']);
         }
     }
@@ -141,11 +139,11 @@ class MateriController extends Controller
         $post = Materi::findOrFail($materi->id);
         $post->delete();
 
-        if($post){
-        //redirect dengan pesan sukses
+        if ($post) {
+            //redirect dengan pesan sukses
             return redirect()->route('materi.index')->with(['success' => 'Data Berhasil Dihapus!']);
-        }else{
-        //redirect dengan pesan error
+        } else {
+            //redirect dengan pesan error
             return redirect()->route('materi.index')->with(['error' => 'Data Gagal Dihapus!']);
         }
     }

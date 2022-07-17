@@ -59,6 +59,7 @@ Artikel
                             <th>#</th>
                             <th>Judul Artikel</th>
                             <th>Kategori Artikel</th>
+                            <th>Jumlah Dibaca</th>
                             <th>Tag Artikel</th>
                             <th>Tanggal Pembuatan</th>
                             <th>Status</th>
@@ -72,6 +73,7 @@ Artikel
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->judul_artikel }}</td>
                             <td>{{ $data->kategori->nama_kategori }}</td>
+                            <td>{{ $data->views }}</td>
                             <td>
                                 @foreach ($data->tag as $tag)
                                 <span class="badge bg-primary">{{ $tag->tags }}</span>

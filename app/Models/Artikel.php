@@ -24,12 +24,12 @@ class Artikel extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function kategori()
     {
-        return $this->belongsTo(KategoriArtikel::class,'kategori_id');
+        return $this->belongsTo(KategoriArtikel::class, 'kategori_id');
     }
 
     public function tag()
@@ -37,4 +37,10 @@ class Artikel extends Model
         return $this->belongsToMany(TagArtikel::class, 'artikel_tag');
     }
 
+    public function incrementViewsCount($id)
+    {
+        $artikel = Artikel::find($id);
+        $artikel->views = $artikel->views + 1;
+        $artikel->save();
+    }
 }

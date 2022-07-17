@@ -18,6 +18,7 @@ class CreateMateriTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('materi');
+            $table->bigInteger('views')->unsigned()->default(0);
             $table->timestamps();
         });
     }

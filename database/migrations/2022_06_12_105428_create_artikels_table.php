@@ -20,17 +20,18 @@ class CreateArtikelsTable extends Migration
             $table->longText('konten');
             $table->string('foto_sampul');
             $table->enum('status', ['Terbit', 'Tidak Terbit'])->default('Terbit');
+            $table->bigInteger('views')->unsigned()->default(0);
             $table->timestamps();
         });
 
-        Schema::table('artikels', function($table) {
+        Schema::table('artikels', function ($table) {
             $table->foreignId('kategori_id')
                 ->constrained('kategori_artikel')
                 ->restrictOnUpdate()
                 ->cascadeOnDelete();
         });
 
-        Schema::table('artikels', function($table) {
+        Schema::table('artikels', function ($table) {
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->restrictOnUpdate()

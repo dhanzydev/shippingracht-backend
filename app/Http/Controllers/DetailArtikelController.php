@@ -9,9 +9,10 @@ use Carbon\Carbon;
 
 class DetailArtikelController extends Controller
 {
-    public function index(Request $request, $id)
+    public function index(Artikel $artikel, $id)
     {
         $data = Artikel::findOrFail($id);
+        $artikel->incrementViewsCount($id);
         $date = $data->created_at->translatedFormat('d F Y');
         return view('pages.detail-artikel', compact('data', 'date'));
     }

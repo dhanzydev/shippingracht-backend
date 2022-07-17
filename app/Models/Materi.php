@@ -11,8 +11,15 @@ class Materi extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'materi'
+        'title', 'slug', 'materi', 'views'
     ];
+
+    public function incrementViewsCount($id)
+    {
+        $materi = Materi::find($id);
+        $materi->views = $materi->views + 1;
+        $materi->save();
+    }
 
     protected $table = 'materi';
 }

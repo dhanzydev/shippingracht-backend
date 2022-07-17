@@ -55,6 +55,7 @@ Materi
                         <tr>
                             <th>#</th>
                             <th>Judul Materi</th>
+                            <th>Jumlah Dibaca</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@ Materi
                         <tr>
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->title }}</td>
+                            <td>{{ $data->views }}</td>
                             <td>
                                 <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" action="{{ route('materi.destroy', $data->id) }}"
                                     method="post">

@@ -32,6 +32,7 @@ Artikel
                             <th>#</th>
                             <th>Judul Artikel</th>
                             <th>Kategori Artikel</th>
+                            <th>Jumlah Dibaca</th>
                             <th>Author</th>
                             <th>Tag Artikel</th>
                             <th>Tanggal Pembuatan</th>
@@ -45,6 +46,7 @@ Artikel
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->judul_artikel }}</td>
                             <td>{{ $data->kategori->nama_kategori }}</td>
+                            <td>{{ $data->views }}</td>
                             <td>{{ $data->author->name }}</td>
                             <td>
                                 @foreach ($data->tag as $tag)
