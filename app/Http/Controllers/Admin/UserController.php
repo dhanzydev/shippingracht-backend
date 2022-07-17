@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -14,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        return view('pages-admin.user.create');
     }
 
     /**
@@ -24,7 +27,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,8 +37,38 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'username' => 'required',
+            'password' => 'required|min:8',
+            'gender' => 'required',
+        ]);
+
+        $password = Hash::make($request->password);
+        $email = $request->email;
+
+        if (DB::table('users')->where('email', '=', $email)->exists()) {
+            return redirect()->route('pengguna.index')->with('error', 'Email Sudah Digunakan');
+        } else {
+            $post = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => $password,
+                'gender' => $request->gender,
+            ]);
+
+            if ($post) {
+                //redirect dengan pesan sukses
+                return redirect()->route('pengguna.index')->with('success', 'Pengguna Berhasil Ditambahkan!');
+            } else {
+                //redirect dengan pesan error
+                return redirect()->route('pengguna.index')->with('error', 'Pengguna Gagal Ditambahkan!');
+            }
+        }
     }
+
 
     /**
      * Display the specified resource.

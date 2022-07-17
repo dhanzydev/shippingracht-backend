@@ -1,7 +1,7 @@
 @extends('layouts.app-admin')
 
 @section('title')
-Edit Kategori Artikel
+Dashboard
 @endsection
 
 @section('title-section')

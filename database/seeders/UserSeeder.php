@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'madedipta88@gmail.com',
             'username' => 'admin',
             'password' => bcrypt('admin'),
+            'gender' => 0,
         ]);
 
         $admin->assignRole('admin');

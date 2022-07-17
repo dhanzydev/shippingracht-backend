@@ -1,7 +1,7 @@
 @extends('layouts.app-admin')
 
 @section('title')
-Dashboard
+Materi
 @endsection
 
 @section('title-section')

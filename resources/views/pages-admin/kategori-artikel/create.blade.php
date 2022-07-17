@@ -1,7 +1,7 @@
 @extends('layouts.app-admin')
 
 @section('title')
-Dashboard
+Tambah Kategori Artikel
 @endsection
 
 @section('title-section')

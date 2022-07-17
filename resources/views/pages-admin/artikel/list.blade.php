@@ -1,7 +1,7 @@
 @extends('layouts.app-admin')
 
 @section('title')
-Artikel
+Daftar Artikel
 @endsection
 
 @section('content')

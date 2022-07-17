@@ -49,30 +49,36 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{  request()->routeIs('pengguna.index') ? 'active' : '' }} ">
+                            <a href="{{ route('pengguna.index') }}" class='sidebar-link'>
+                                <i class="iconly-boldAdd-User"></i>
+                                <span>Pengguna</span>
+                            </a>
+                        </li>
                         <li class="sidebar-title">Artikel</li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('tag-artikel.index') ? 'active' : '' }}">
                             <a href="{{ route('tag-artikel.index') }}" class='sidebar-link'>
                                 <i class="bi bi-tag"></i>
                                 <span>Kelola Tag Artikel</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('kategori-artikel.index') ? 'active' : '' }}">
                             <a href="{{ route('kategori-artikel.index') }}" class='sidebar-link'>
                                 <i class="bi bi-list-ul"></i>
                                 <span>Kelola Kategori Artikel</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('artikel.index') ? 'active' : '' }}">
                             <a href="{{ route('artikel.index') }}" class='sidebar-link'>
                                 <i class="bi bi-book-fill"></i>
                                 <span>Kelola Artikel</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('daftar-artikel') ? 'active' : '' }}">
                             <a href="{{ route('daftar-artikel') }}" class='sidebar-link'>
                                 <i class="bi bi-hdd-stack"></i>
                                 <span>Daftar Artikel</span>
@@ -80,7 +86,7 @@
                         </li>
 
                         <li class="sidebar-title">Materi</li>
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('materi.index') ? 'active' : '' }}">
                             <a href="{{ route('materi.index') }}" class='sidebar-link'>
                                 <i class="bi bi-book-fill"></i>
                                 <span>Kelola Materi</span>
@@ -88,7 +94,7 @@
                         </li>
                         <li class="sidebar-title">Pengaturan</li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item {{ request()->routeIs('ganti-password') ? 'active' : '' }}">
                             <a href="{{ route('ganti-password') }}" class='sidebar-link'>
                                 <i class="bi bi-gear"></i>
                                 <span>Ganti Password</span>
