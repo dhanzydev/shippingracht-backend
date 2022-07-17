@@ -20,6 +20,8 @@ class DashboardController extends Controller
         $username = $user->username;
         $displayUsername = $add . $username;
         $nama = $user->name;
+        $gender = $user->gender;
+        $photo = $user->picture;
         $listArtikel = Artikel::with('kategori')->limit(5)->latest()->get();
         $listMateri = Materi::limit(5)->latest()->get();
 
@@ -27,6 +29,6 @@ class DashboardController extends Controller
         $artikel = Artikel::count();
         $materi = Materi::count();
 
-        return view('pages-admin.dashboard', compact('member', 'artikel', 'materi', 'displayUsername', 'nama', 'listArtikel', 'listMateri'));
+        return view('pages-admin.dashboard', compact('member', 'artikel', 'materi', 'displayUsername', 'nama', 'listArtikel', 'listMateri', 'gender', 'photo'));
     }
 }

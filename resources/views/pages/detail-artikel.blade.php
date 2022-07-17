@@ -16,7 +16,13 @@
             <h2 class="judul-artikel fw-bold mb-3">{{ $data->judul_artikel }}</h2>
             <div class="d-flex align-items-center">
                 <div class="author-image me-3">
-                    <img src="../assets/images/student1.jpg" alt="Author Artikel" />
+                    @if ($data->author->gender == 1 && $data->author->picture == '')
+                    <img src="/assets/images/man.png" alt="Foto Profil">
+                    @elseif($data->author->gender == 0 && $data->author->picture == '')
+                    <img src="/assets/images/woman.png" alt="Foto Profil">
+                    @else
+                    <img src="{{ url('/').Storage::url($data->author->picture) }}" alt="Foto Profil">
+                    @endif
                 </div>
                 <p class="author-artikel fw-bold">{{ $data->author->name }}</p>
             </div>

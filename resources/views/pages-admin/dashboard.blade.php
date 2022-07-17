@@ -133,7 +133,13 @@ Dashboard
         <div class="card-body py-4 px-5">
             <div class="d-flex align-items-center">
                 <div class="avatar avatar-xl">
-                    <img src="assets/images/faces/1.jpg" alt="Foto Profil">
+                    @if ($gender == 1 && $photo == '')
+                    <img src="/admin-page/assets/images/man.png" alt="Foto Profil">
+                    @elseif($gender == 0 && $photo == '')
+                    <img src="/admin-page/assets/images/woman.png" alt="Foto Profil">
+                    @else
+                    <img src="{{ url('/').Storage::url($photo) }}" alt="Foto Profil">
+                    @endif
                 </div>
                 <div class="ms-3 name">
                     <h5 class="font-bold">{{ $nama }}</h5>
