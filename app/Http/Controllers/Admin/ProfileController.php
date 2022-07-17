@@ -103,6 +103,7 @@ class ProfileController extends Controller
                 'gender' => $request->gender,
                 'picture' => $photo
             ]);
+            return redirect()->route('profile.index')->with('success', 'Profile Berhasil Diubah!');
         }
     }
 
