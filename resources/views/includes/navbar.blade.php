@@ -18,7 +18,7 @@
                         <a class="nav-link text-light p-3" href="{{ route('artikel') }}">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light p-3" href="">Acara</a>
+                        <a class="nav-link text-light p-3" href="{{ route('acara') }}">Acara</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link text-light p-3" href="{{ route('forum') }}">Forum & Diskusi</a>

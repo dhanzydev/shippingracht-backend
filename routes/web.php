@@ -14,6 +14,7 @@ use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\BuatPertanyaanController;
 use App\Http\Controllers\ArtikelController as PublicArtikelController;
 use App\Http\Controllers\DetailArtikelController;
+use App\Http\Controllers\AcaraController;
 
 // Admin Routes
 use App\Http\Controllers\Admin\DashboardController;
@@ -49,6 +50,7 @@ Route::get('/artikel/{id}/{title:slug}', [DetailArtikelController::class, 'index
 Route::get('/cariartikel', [PublicArtikelController::class, 'search'])->name('cariartikel');
 Route::get('/kategori-artikel/{slug}', [PublicArtikelController::class, 'categories'])->name('artikel-kategori');
 Route::get('/tag-artikel/{slug}', [PublicArtikelController::class, 'tags'])->name('artikel-tags');
+Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
 
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
